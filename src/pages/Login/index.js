@@ -24,12 +24,7 @@ export default function Login({ navigation }) {
   const card = new Animated.Value(-30);
   const img = new Animated.Value(-20);
 
-
-
-
   const masuk = () => {
-
-
     if (kirim.telepon == null && kirim.password == null) {
       Alert.alert(MYAPP, 'telepon dan Password tidak boleh kosong !');
     } else if (kirim.telepon == null) {
@@ -37,13 +32,9 @@ export default function Login({ navigation }) {
     } else if (kirim.password == null) {
       Alert.alert(MYAPP, 'Password tidak boleh kosong !');
     } else {
-
-
       setLoading(true);
       console.log(kirim);
-
-      axios
-        .post(apiURL + 'login', kirim)
+      axios.post(apiURL + 'login', kirim)
         .then(res => {
           setLoading(false);
           console.log(res.data);
@@ -57,14 +48,7 @@ export default function Login({ navigation }) {
             navigation.replace('MainApp')
           }
         });
-
-
-
     }
-
-
-
-
   }
 
   useEffect(() => {
@@ -81,152 +65,98 @@ export default function Login({ navigation }) {
     axios.post(apiURL + 'company').then(res => {
       setComp(res.data.data);
     })
-
   }, []);
 
   return (
-
-    <ScrollView style={{ flex: 1, backgroundColor: colors.primary, position:"relative"}}>
-
-
-
-
-      <View style={{
-        justifyContent: 'center',
-        alignItems: 'center',
-      
-       
-        
-      }}>
-    <ImageBackground source={require('../../assets/bgsplash.png')} style={{
-      flex:1,
-      height:'100%',
-        width:'100%',
-        justifyContent:'center',
-        alignItems:"center",
-        backgroundColor:colors.primary
-    }}>
-    <Animated.Image source={require('../../assets/logo.png')} style={{
-          marginTop: 10,
-          width: windowWidth / 1.9,
-          height: windowWidth / 1.9,
-          resizeMode: 'contain'
-        }} />
-    </ImageBackground>
-      </View>
-
-        <ScrollView style={{flex:1, backgroundColor:colors.white, borderTopRightRadius:50, borderTopLeftRadius:50, position:'relative'}}>
-        <Animated.View style={{
-        padding: 20,
-        flex: 1, margin: 10,
-        bottom: card,
-        borderRadius: 10,
-      
-      }}>
-
-        <Text style={{
-          textAlign:'center',
-          fontFamily:fonts.primary[600],
-          fontSize:MyDimensi / 2.5,
-          marginTop: -25
+    <View style={{ flex: 1, backgroundColor: colors.primary, position: "relative" }}>
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+        <ImageBackground source={require('../../assets/bgsplash.png')} style={{
+          flex: 1,
+          height: '100%',
+          width: '100%',
+          backgroundColor: colors.primary
         }}>
-          LOGIN
-        </Text>
-      
-
-        {/* USERNAME INPUT */}
-
-        
-        <MyGap jarak={50} />
-   
-        <MyInput label="Username" iconname="person" placeholder="Masukan username" />
-
-
-        <MyGap jarak={20} />
-        {/* PASSWORD INPUT */}
-
-        
-        <MyInput label="Password" iconname="key" placeholder="Masukan password" secureTextEntry={true} />
-
-
-        {/* BUTTON LOGIN */}
-        <TouchableOpacity onPress={() => {
-          let urlWA = 'https://wa.me/' + comp.tlp + `?text=Hallo admin saya lupa password . . .`;
-          Linking.openURL(urlWA)
-        }} style={{
-          marginTop: 0,
-        }}>
-          <Text style={{
-            textAlign: 'right',
-            fontFamily: fonts.secondary[600],
-            color: colors.black,
-            fontSize: MyDimensi / 4,
-            marginTop:10,
-            
-          }}>Lupa password ?</Text>
-        </TouchableOpacity>
-
-        <MyGap jarak={40}/>
-        <MyGap jarak={0} />
-        {!loading &&
-
-
-     
-
-
-          <MyButton
-            onPress={masuk}
-            title="Login"
-
-
-            Icons="log-in-outline"
-          />
-
-
-        }
-
-        {!loading && <TouchableWithoutFeedback onPress={() => navigation.navigate('Register')}>
-          <View style={{
+          <Animated.Image source={require('../../assets/logo.png')} style={{
             marginTop: 10,
-            backgroundColor: colors.white,
-            justifyContent: 'center',
-            alignItems: 'center'
+            width: windowWidth / 1.9,
+            height: windowWidth / 1.9,
+            resizeMode: 'contain',
+            alignSelf: "center"
+          }} />
+          <Animated.View style={{
+            padding: 0,
+            margin: 0,
+            bottom: card,
+            borderRadius: 10,
+            alignItems: 'center', // Center the white background view
           }}>
-            <Text style={{
-              fontSize: MyDimensi / 4,
-              fontFamily: fonts.primary[400],
-              textAlign: 'center',
-              color: colors.black
-            }}>Belum memiliki Akun ? <Text style={{
-              fontSize: MyDimensi / 4,
-              fontFamily: fonts.primary[600],
-              textAlign: 'center',
-              color: colors.black
-            }}>Daftar disini</Text></Text>
-          </View>
-        </TouchableWithoutFeedback>}
-
-      </Animated.View>
-      <View style={{marginTop:'100%'}}>
-
-      </View>
-        </ScrollView>
-
-      
-
-{/* 
-      {loading && <View style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-      }}>
-        <ActivityIndicator color={colors.secondary} size="large" />
-      </View>} */}
-    </ScrollView>
-
-
-
-
+            <View style={{
+              width: '100%', // Set the width to full screen
+              padding: 10,
+              backgroundColor: 'white',
+              borderTopLeftRadius:50,
+              borderTopRightRadius:50,
+            }}>
+              <Text style={{
+                textAlign: 'center',
+                fontFamily: fonts.primary[600],
+                fontSize: MyDimensi / 2.5,
+                marginTop: 0
+              }}>
+                LOGIN
+              </Text>
+              <MyGap jarak={50} />
+              <MyInput label="Username" iconname="person" placeholder="Masukan username" />
+              <MyGap jarak={20} />
+              <MyInput label="Password" iconname="key" placeholder="Masukan password" secureTextEntry={true} />
+              <TouchableOpacity onPress={() => {
+                let urlWA = 'https://wa.me/' + comp.tlp + `?text=Hallo admin saya lupa password . . .`;
+                Linking.openURL(urlWA)
+              }} style={{ marginTop: 0 }}>
+                <Text style={{
+                  textAlign: 'right',
+                  fontFamily: fonts.secondary[600],
+                  color: colors.black,
+                  fontSize: MyDimensi / 4,
+                  marginTop: 10,
+                }}>Lupa password ?</Text>
+              </TouchableOpacity>
+              <MyGap jarak={40} />
+              <MyGap jarak={0} />
+              {!loading &&
+                <MyButton
+                  onPress={masuk}
+                  title="Login"
+                  Icons="log-in-outline"
+                />
+              }
+              {!loading &&
+                <TouchableWithoutFeedback onPress={() => navigation.navigate('Register')}>
+                  <View style={{
+                    marginTop: 10,
+                    backgroundColor: colors.white,
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                  }}>
+                    <Text style={{
+                      fontSize: MyDimensi / 4,
+                      fontFamily: fonts.primary[400],
+                      textAlign: 'center',
+                      color: colors.black
+                    }}>Belum memiliki Akun ? <Text style={{
+                      fontSize: MyDimensi / 4,
+                      fontFamily: fonts.primary[600],
+                      textAlign: 'center',
+                      color: colors.black
+                    }}>Daftar disini</Text></Text>
+                  </View>
+                </TouchableWithoutFeedback>}
+              <View style={{ marginTop: '50%' }}></View>
+            </View>
+          </Animated.View>
+        </ImageBackground>
+      </ScrollView>
+    </View>
   );
 }
 

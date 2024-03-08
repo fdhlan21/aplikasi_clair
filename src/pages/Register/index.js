@@ -122,43 +122,32 @@ export default function Register({ navigation }) {
 
     return (
         
-            <ScrollView
-                style={{
-                    flex: 1,
-                    backgroundColor: colors.primary,
-                  
-                    position: 'relative',
-                    
-                    
-                }}>
-
-                <View style={{flex:1, backgroundColor:colors.primary}}>
+            <View
+              style={{ flex: 1, backgroundColor: colors.primary, position: "relative" }}>
+                <ScrollView showsVerticalScrollIndicator={false} style={styles.page}>
                    <ImageBackground source={require('../../assets/bgsplash.png')} style={{
-                    flex:1,
-                    height:'100%',
-                    width:'100%',
-                    justifyContent:'center',
-                    alignItems:'center',
-                    backgroundColor:colors.danger,
+                        flex: 1,
+                         height: '100%',
+                        width: '100%',
+                        backgroundColor: colors.primary
 
                    }}>
-                        <Image source={require('../../assets/logo.png')} style={{
-                                     marginTop: 10,
-          width: windowWidth / 1.9,
-          height: windowWidth / 1.9,
-          resizeMode: 'contain'
+                    <Image source={require('../../assets/logo.png')} style={{
+                                       marginTop: 10,
+            width: windowWidth / 1.9,
+            height: windowWidth / 1.9,
+            resizeMode: 'contain',
+            alignSelf: "center"
                         }}/>
-                   </ImageBackground> 
-                </View>
-
-                {/* <Switch onValueChange={toggleSwitch} value={isEnabled} /> */}
-                <ScrollView showsVerticalScrollIndicator={false} style={styles.page}>
-
-
-
-
+                
                     <View style={{
-                        paddingHorizontal: 0,
+                    padding:10,
+                    backgroundColor:'white',
+                    borderTopLeftRadius:50,
+                    borderTopRightRadius:50,
+                    width:'100%'
+
+
                     }}>
                         <Text style={{
                             fontSize: MyDimensi / 2.5,
@@ -175,14 +164,14 @@ export default function Register({ navigation }) {
                             <MyGap jarak={20}/>
 
                             
-                            <MyInput label='Nomor Telepon' iconname='call' placeholder='Nomor Telephone'/>
+                            <MyInput label='Nomor Telepon' iconname='call' placeholder='Nomor Telepon'/>
                             <MyGap jarak={20}/>
 
                             
                             
                         {/*INPUT KATA SANDI */}
                         <MyInput
-                            placeholder="Kata Sandi..."
+                            placeholder="Kata Sandi"
                             label="Kata Sandi"
                             iconname="lock-closed"
                             value={data.password}
@@ -222,11 +211,7 @@ export default function Register({ navigation }) {
 
                             }
                         />
-                    </View>
                     <MyGap jarak={20} />
-
-
-
 
                     {!loading &&
                         <>
@@ -241,7 +226,6 @@ export default function Register({ navigation }) {
                         </>
                     }
 
-                    <MyGap jarak={10} />
                     {loading && <View style={{
                         flex: 1,
                         justifyContent: 'center',
@@ -249,26 +233,28 @@ export default function Register({ navigation }) {
                     }}>
                         <ActivityIndicator color={colors.primary} size="large" />
                     </View>}
+
+                    <View style={{marginTop:'40%'}}>
+                    </View>
+
                     
-                    <View style={{paddingTop:'100%'}}>
+
+
+                    <MyGap jarak={10} />
 
                     </View>
 
+                    </ImageBackground> 
                 </ScrollView>
 
-            </ScrollView>
+            </View>
 
     );
 }
 
 const styles = StyleSheet.create({
     page: {
-        flex: 1,
-        padding: 10,
-        position:'relative',
-        backgroundColor:colors.white,
-     borderTopRightRadius:50,
-     borderTopLeftRadius:50,
+        flexGrow: 1
      
    
 
