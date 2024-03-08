@@ -175,7 +175,7 @@ export default function Register({ navigation }) {
                             <MyGap jarak={20}/>
 
                             
-                            <MyInput label='Nomor Telephone' iconname='call' placeholder='Nomor Telephone'/>
+                            <MyInput label='Nomor Telepon' iconname='call' placeholder='Nomor Telephone'/>
                             <MyGap jarak={20}/>
 
                             

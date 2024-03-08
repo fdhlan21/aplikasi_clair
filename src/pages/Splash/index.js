@@ -75,13 +75,13 @@ export default function Splash({ navigation }) {
           source={require('../../assets/logo.png')}
           resizeMode="contain"
           style={{
-            width: img,
-            height: img
+            width: 150,
+            height: 150
           }}
         />
         <Animated.Text style={{
           fontFamily: fonts.secondary[800],
-          fontSize: MyDimensi/3.5,
+          fontSize: MyDimensi/2.6,
           color: colors.white,
           marginTop: 10,
           marginBottom: text,

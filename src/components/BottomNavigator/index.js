@@ -81,10 +81,10 @@ export default function BottomNavigator({ state, descriptors, navigation }) {
 
         if (label === 'Home') {
           iconName = 'home-outline';
-          Newlabel = 'Beranda';
+      
         } else if (label === 'Maps') {
           iconName = 'navigate-circle-outline';
-          Newlabel = 'Maps';
+          
         } else if (label === 'TanyaJawab') {
           iconName = 'chatbubbles-outline';
           Newlabel = 'Tanya Jawab';
@@ -96,7 +96,7 @@ export default function BottomNavigator({ state, descriptors, navigation }) {
           Newlabel = 'Logout';
         } else if (label === 'Account') {
           iconName = 'person-outline';
-          Newlabel = 'Profile';
+         
         }
 
         return (
